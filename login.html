@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet"/>
+    <style>
+        .title-font {
+            font-family: 'Righteous', cursive;
+        }
+        .top-left-title {
+            font-family: 'Righteous', cursive;
+            font-size: 2rem;
+            color: #f56565;
+        }
+        .box-title {
+            font-family: 'Righteous', cursive;
+            font-size: 2.5rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-white flex items-center justify-center min-h-screen">
+    <div class="absolute top-0 left-0 m-4 font-bold top-left-title">FOUR YOU</div>
+    <div class="text-center">
+        <div class="bg-pink-200 p-16 rounded-lg relative inline-block">
+            <div class="font-bold text-white mb-4">
+                hi welcome back to
+                <br/>
+                <span class="font-bold text-red-500 box-title">FOUR YOU</span>
+            </div>
+            <button class="absolute top-2 right-2 text-gray-500" onclick="window.location.href='main.html';">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="mt-8">
+            <h2 class="text-lg font-semibold mb-4">Login now</h2>
+            <form class="space-y-4" onsubmit="handleLogin(event)">
+                <div class="flex items-center border border-gray-300 rounded-md p-2">
+                    <input class="flex-1 outline-none" placeholder="Username" id="username" type="text" required/>
+                </div>
+                <div class="flex items-center border border-gray-300 rounded-md p-2">
+                    <input class="flex-1 outline-none" placeholder="Password" id="password" type="password" required/>
+                </div>
+                <div class="flex items-start">
+                    <input class="mt-1" id="remember" type="checkbox"/>
+                    <label class="ml-2 text-sm text-gray-600" for="remember">Remember me</label>
+                </div>
+                <button class="w-full bg-red-500 text-white py-2 rounded-md" type="submit">Login</button>
+            </form>
+            <div class="mt-4">
+                <p class="text-sm text-gray-600">
+                    Don't have an account? 
+                    <a class="text-red-500" href="signup.html">Sign Up</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function handleLogin(event) {
+            event.preventDefault(); // Prevent the default form submission
+            const username = document.getElementById('username').value; // Get the username
+            const password = document.getElementById('password').value; // Get the password
+
+            const response = await fetch('http://localhost:8000/api/login/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username, password }), // Use username directly
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                alert(data.message); // Show success message
+                window.location.href = 'profile.html'; // Redirect to profile.html
+            } else {
+                const data = await response.json();
+                alert(data.error || 'Login failed. Please try again.'); // Show error message
+            }
+        }
+    </script>
+</body>
+</html>

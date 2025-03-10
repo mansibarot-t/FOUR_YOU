@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Search</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        .dropdown {
+            display: none;
+            position: absolute;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 0.5rem;
+            z-index: 10;
+            width: 100%;
+        }
+        .dropdown-item {
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+        }
+        .dropdown-item:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-6 relative">
+    <div class="container mx-auto">
+        <h1 class="text-2xl font-bold mb-4">Search Products</h1>
+        <div class="flex items-center mb-4">
+            <input id="searchInput" type="text" placeholder="Type to search..." class="border rounded-l px-4 py-2 w-full">
+            <button id="searchButton" class="bg-blue-500 text-white rounded-r px-4 py-2">Search</button>
+        </div>
+        <div id="dropdown" class="dropdown"></div>
+    </div>
+
+    <script>
+        const products = [
+            { name: "Best Selling Products", link: "bestselling.html" },
+            { name: "Top Products", link: "topproducts.html" },
+            { name: "New Arrivals", link: "newarrivals.html" },
+            { name: "Discounted Products", link: "discounted.html" },
+            { name: "Popular Products", link: "popular.html" }
+        ];
+
+        const searchInput = document.getElementById('searchInput');
+        const dropdown = document.getElementById('dropdown');
+
+        searchInput.addEventListener('input', function() {
+            const query = this.value.toLowerCase();
+            dropdown.innerHTML = ''; // Clear previous options
+            if (query) {
+                const filteredProducts = products.filter(product => product.name.toLowerCase().includes(query));
+                if (filteredProducts.length > 0) {
+                    dropdown.style.display = 'block'; // Show dropdown
+                    filteredProducts.forEach(product => {
+                        const item = document.createElement('div');
+                        item.className = 'dropdown-item';
+                        item.textContent = product.name;
+                        item.onclick = () => {
+                            window.location.href = product.link; // Redirect to the product page
+                        };
+                        dropdown.appendChild(item);
+                    });
+                } else {
+                    dropdown.style.display = 'none'; // Hide dropdown if no matches
+                }
+            } else {
+                dropdown.style.display = 'none'; // Hide dropdown if input is empty
+            }
+        });
+
+        // Hide dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!searchInput.contains(event.target) && !dropdown.contains(event.target)) {
+                dropdown.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

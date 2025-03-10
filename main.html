@@ -1,0 +1,111 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Web Page
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet"/> <!-- Added Righteous font -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: 'Roboto', sans-serif;
+        }
+   .title-font {
+            font-family: 'Righteous', cursive; /* Apply Righteous font */
+            font-size: 3rem; /* Adjust font size as needed */
+        }
+  </style>
+ </head>
+ <body class="bg-white">
+  <!-- Header -->
+  <header class="border-b bg-pink-200">
+   <div class="container mx-auto flex justify-between items-center py-4 px-6">
+    <div class="font-bold text-red-500 title-font"> <!-- Apply title-font class -->
+     FOUR YOU
+    </div>
+    <div class="flex items-center space-x-4">
+     <input class="border rounded-full px-4 py-2" placeholder="Search" type="text"/>
+     <a class="text-gray-800 hover:text-pink-600" href="signup.html">
+      <i class="fas fa-user">
+      </i>
+     </a>
+     <a class="text-gray-800 hover:text-pink-600" href="addtocart.html">
+      <i class="fas fa-shopping-bag">
+      </i>
+     </a>
+    </div>
+   </div>
+   <!-- Sub Navigation -->
+   <div class="bg-gray-100 border-b">
+    <div class="container mx-auto flex justify-center py-2 px-6">
+     <nav class="space-x-6">
+      <a class="text-gray-700 hover:text-red-500" href="aboutus.html">
+       About
+      </a>
+      <a class="text-gray-700 hover:text-red-500" href="whatsnew.html">
+       What's New
+      </a>
+      <a class="text-gray-700 hover:text-red-500" href="makeup.html">
+       Makeup
+      </a>
+      <a class="text-gray-700 hover:text-red-500" href="skincare.html">
+       Skin
+      </a>
+      <a class="text-gray-700 hover:text-red-500" href="hair.html">
+       Hair
+      </a>
+      <a class="text-gray-700 hover:text-red-500" href="fragrance.html">
+       Fragrance
+      </a>
+      <a class="text-gray-700 hover:text-red-500" href="men.html">
+       Men
+      </a>
+     </nav>
+    </div>
+   </div>
+  </header>
+  <!-- Banner -->
+  <div class="bg-red-100 py-2">
+   <div class="container mx-auto text-center">
+    <span class="text-red-500 font-bold">
+     TREATS :
+    </span>
+    <span class="text-gray-700">
+     Explore wide variety of rewards
+    </span>
+   </div>
+  </div>
+  <!-- Promo Section -->
+  <div class="bg-gray-100 py-4">
+   <div class="container mx-auto text-center">
+    <span class="text-gray-700">
+     Enjoy up to 25% off. Use code : WDAY
+    </span>
+   </div>
+  </div>
+  <!-- Main Content -->
+  <div class="container mx-auto py-8 px-6">
+   <div class="flex flex-col md:flex-row items-center justify-between bg-pink-100 p-6 rounded-lg">
+    <div class="text-center md:text-left md:w-1/2">
+     <h1 class="text-4xl font-bold text-gray-800">
+      Up to 50% off
+     </h1>
+     <p class="text-gray-700 mt-2">
+      HERE'S TO YOU
+     </p>
+     <button class="mt-4 bg-black text-white px-6 py-2 rounded-full" onclick="window.location.href='whatsnew.html';">
+        Shop Now
+    </button>
+    </div>
+    <div class="md:w-1/2 mt-6 md:mt-0 relative">
+     <img alt="AI-generated image of a girl with elegant makeup and an aesthetic background of pink stripes" class="w-full rounded-lg" height="400" src="maingurlwithlipstick.jpg" width="600"/>
+    </div>
+   </div>
+  </div>
+ </body>
+</html>
